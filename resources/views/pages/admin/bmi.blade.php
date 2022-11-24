@@ -46,7 +46,7 @@
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label">Tanggal Lahir</label>
-                                            <input type="date" class="form-control" name="lahir">
+                                            <input type="number" class="form-control" name="lahir">
                                         </div>
                                         <button type="submit" class="btn btn-primary">Submit</button>
                                     </form>
@@ -68,12 +68,9 @@
                                                 </tr>
                                                 <tr>
                                                     <td>{{ $data['lahir'] }} Tahun</td>
-
-                                                </tr>
-                                                <tr>
                                                     <td>{{ $data['kupon'] }} </td>
-                                                @endisset
-                                            </tr>
+                                                </tr>
+                                            @endisset
                                         </tbody>
                                     </table>
                                 </div>

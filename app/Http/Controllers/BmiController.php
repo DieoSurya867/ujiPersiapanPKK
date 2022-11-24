@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use DateTime;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Date;
+
 
 class BmiController extends Controller
 {
@@ -36,7 +36,7 @@ class BmiController extends Controller
      */
     public function store(Request $request)
     {
-        $a = new konsul($request->namaOrang, $request->berat, $request->tinggi, $request->lahir);
+        $a = new konsul($request->namaOrang, $request->berat, $request->tinggi, $request->lahir, $request->kupon);
         // $a->bmi();
         // $a->obes();
         $data = [
@@ -98,12 +98,13 @@ class BmiController extends Controller
 
 class hitung
 {
-    public function __construct($namaOrang, $berat, $tinggi, $lahir)
+    public function __construct($namaOrang, $berat, $tinggi, $lahir, $kupon)
     {
         $this->namaOrang = $namaOrang;
         $this->berat = $berat;
         $this->tinggi = $tinggi / 100;
         $this->lahir = $lahir;
+        $this->kupon = $kupon;
     }
     public function nama()
     {
@@ -117,24 +118,17 @@ class hitung
     }
     public function umur()
     {
-        // tanggal lahir
-
-        $tanggal = new DateTime($this->lahir);
-
-        // tanggal hari ini
-        $today = new DateTime('today');
-
-
-        // tahun
-        $y = $today->diff($tanggal)->y;
-
-        // bulan
-        $m = $today->diff($tanggal)->m;
-
-        // hari
-        $d = $today->diff($tanggal)->d;
-
-        return $this->lahir =  $y;
+        $hasil = 2022 - $this->lahir;
+        // $birthDate = new \DateTime($this->lahir);
+        // $today = new \DateTime("today");
+        // if ($birthDate > $today) {
+        //     return "0 tahun 0 bulan 0 hari";
+        // }
+        // $y = $today->diff($birthDate)->y;
+        // // dd($y);
+        // $m = $today->diff($birthDate)->m;
+        // $d = $today->diff($birthDate)->d;
+        return $this->lahir =  $hasil;
     }
 }
 
@@ -158,16 +152,16 @@ class konsul extends hitung
     }
     public function checkKonsul()
     {
-        // $umur = $this->umur();
+        $umur = $this->umur();
         // $umur2 = (int)$umur;
-        // $dbmi = $this->bmi();
+        $dbmi = $this->bmi();
 
-        // if ($umur2 >= 17 && $umur2 <= 30 && $dbmi > 29.9) {
-        //     return "Gratis Konsultasi";
-        // } else if ($umur2 > 30 && $dbmi > 29.9) {
-        //     return "Obat Gratis";
-        // } else {
-        //     return `Tidak Memenuhi Syarat`;
-        // }
+        if ($umur >= 17 && $umur <= 30 && $dbmi > 29.9) {
+            return $this->kupon =  "Gratis Konsultasi";
+        } else if ($umur > 30 && $dbmi > 29.9) {
+            return $this->kupon =  "Obat Gratis";
+        } else {
+            return $this->kupon =   `Tidak Memenuhi Syarat`;
+        }
     }
 }
