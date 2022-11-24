@@ -6,54 +6,11 @@
 
         <!-- Form controls -->
         <div class="row">
-            <div class="col-md-6">
-                <div class="card mb-4">
 
-
-                    <h5 class="card-header">Perhitungan Bmi</h5>
-                    <div class="card-body">
-                        <form action="{{ route('dashboard.store') }}" method="POST">
-                            @csrf
-                            <div class="mb-3">
-                                <label class="form-label" for="namaOrang">Name</label>
-                                <input class="form-control" id="namaOrang" type="text">
-                            </div>
-                            <div class="row">
-                                <div class="col-6 mb-3">
-                                    <label class="form-label" for="tinggi">Tinggi <em>in cm</em> </label>
-                                    <input class="form-control" id="tinggi" type="number">
-                                </div>
-                                <div class="col-6 mb-3">
-                                    <label class="form-label" for="berat">Berat <em>in kg</em> </label>
-                                    <input class="form-control" id="berat" type="number">
-                                </div>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label d-flex justify-content-between" for="hobby">
-                                    <div>Hobbies</div>
-                                    <div><em class="justify-content-end">jika lebih dari satu pisahkan dengan koma (,)</em>
-                                    </div>
-                                </label>
-                                <input class="form-control" id="hobbies" type="text">
-                            </div>
-                            <div class="row">
-                                <div class="col-6 mb-3">
-                                    <label class="form-label" for="yob">Year of Birth</label>
-                                    {{-- <input class="form-control" id="yob" type="number" min="1950"> --}}
-                                    <select class="form-control" id="yob" name="yob"></select>
-                                </div>
-                            </div>
-                            <div class="mt-3 text-center">
-                                <button class="btn btn-success" id="checkBmi" type="button">Submit</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
 
             <div class="col-md-6">
                 <div class="card mb-4">
-                    <h5 class="card-header">Hasil Perhitungan</h5>
+                    <h5 class="card-header">Hasil Perhitungan Bmi</h5>
                     <div class="card-body">
                         <div class="container">
                             <div class="row">
