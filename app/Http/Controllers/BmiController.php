@@ -156,9 +156,9 @@ class konsul extends hitung
         // $umur2 = (int)$umur;
         $dbmi = $this->bmi();
 
-        if ($umur >= 17 && $umur <= 30 && $dbmi > 29.9) {
-            return $this->kupon =  "Gratis Konsultasi";
-        } else if ($umur > 30 && $dbmi > 29.9) {
+        if ($umur >= 17 && $dbmi > 29.9) {
+            return $this->kupon =  "Gratis Konsultasi & Obat Gratis";
+        } else if ($umur < 17 && $dbmi > 29.9) {
             return $this->kupon =  "Obat Gratis";
         } else {
             return $this->kupon =   `Tidak Memenuhi Syarat`;

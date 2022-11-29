@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Role;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class RoleController extends Controller
 {
@@ -45,7 +46,11 @@ class RoleController extends Controller
             'password' => 'required|string',
             'role' => 'required|string',
         ]);
+        $hash_password = Hash::make('password');
+        $validator['password'] = $hash_password;
         Role::create($validator);
+
+
         return redirect('admin/user');
     }
 

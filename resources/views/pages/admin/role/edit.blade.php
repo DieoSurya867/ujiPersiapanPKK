@@ -47,13 +47,13 @@
                                 id="exampleFormControlSelect1" aria-label="Default select example" name="role">
                                 <option selected>Pilih Nama Role</option>
 
-                                <option value="admin" {{ $user->id == $user->role ? 'selected' : 'user' }}>
+                                <option value="admin" {{ $user->id == $user->role ? 'selected' : 'admin' }}>
                                     admin
                                 </option>
                                 <option value="editor" {{ $user->id == $user->role ? 'selected' : 'editor' }}>
                                     editor
                                 </option>
-                                <option value="user" {{ $user->id == $user->role ? 'selected' : 'admin' }}>
+                                <option value="user" {{ $user->id == $user->role ? 'selected' : 'user' }}>
                                     user
                                 </option>
 
